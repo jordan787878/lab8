@@ -1,0 +1,37 @@
+1. Executing an empty throw statement outside a catch handler calls
+   function terminate, which abandons exception processing and terminates
+   the program immediately
+
+2. First, I think the program will run and print out "I love C++".
+   But, after testing the code by writing a program.
+   It turned out that the program failed and terminated.
+   The problem, I found is that the compiler see 3.0 as "double type"
+   rather than "float type", therefore the catch block has nothing to 
+   catch and terminates the program.
+
+   One way to fix it is th change the line " throw 3.0 " to " throw 3.0f "
+   Then the catch block will succesfully get the float type and show
+   out the line " I love C++ ".
+
+
+3. I make a try block which new out enormous number of MinoI.
+   50 loop, and each loop for 50000000 MinoI, in order to use up the 
+   memory.  
+   The program show that in the first three loop, is successfully new 
+   out the memory. While in the forth loop, the memory is used up, thus
+   cerring the Exception line: bad_alloc, which shows a memory allocating
+   error happenes.
+
+   Following is the running script.
+
+
+
+Script started on Sat 04 Jun 2016 06:08:56 PM CST
+[root@jordan787878 lab8]# ./mainpro 
+mino[1] new Success!
+mino[2] new Success!
+mino[3] new Success!
+Exception: St9bad_alloc
+[root@jordan787878 lab8]# exit
+
+Script done on Sat 04 Jun 2016 06:09:32 PM CST
